@@ -23,7 +23,7 @@
 #include "Config.h"
 #include "Crclib.h"
 
-#include "nes.h"
+#include "Nes.h"
 #include "mmu_fceux.h"
 #include "mmu.h"
 #include "cpu.h"
