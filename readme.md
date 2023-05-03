@@ -147,7 +147,7 @@ You will need:
 
 which can be found here: https://wii.leseratte10.de/devkitPro/
 
-Then build by using *make*.
+Then build by using *make -f virtuanes-make*.
 
 -------------------------------------------------------------------------------------------------------
 
