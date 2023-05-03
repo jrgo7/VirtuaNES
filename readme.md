@@ -140,10 +140,6 @@ NOTE: If you enable a cheat, and then disable it, you may need to reset the game
 
 ## How to Build
 
-The current version can be built in two ways:
-
-###  libctru v1.0.0
-
 You will need:
 - devkitARM r45
 - libctru v1.0.0
