@@ -149,6 +149,8 @@ You will need:
 - libctru v1.0.0
 - citro3d v1.0.0
 
+which can be found here: https://wii.leseratte10.de/devkitPro/
+
 Then build by using *make*.
 
 -------------------------------------------------------------------------------------------------------
