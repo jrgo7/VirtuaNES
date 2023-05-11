@@ -14,6 +14,6 @@ typedef struct
 extern SNesPalette     nesPalette[64];
 extern u16             rgbaPalette[16][64];
 
-void nespalInitialize(int choice);
+void nespalInitialize(SNesPalette choice[64]);
 
 #endif

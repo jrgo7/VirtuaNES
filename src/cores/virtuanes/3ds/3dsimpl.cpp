@@ -76,15 +76,19 @@ SMenuItem optionsForStretch[] = {
     MENU_MAKE_LASTITEM  ()
 };
 
+//
+// 
+//
+// GET RID OF THIS OR REPLACE WITH FILE SELECTOR
+//
+//
+//
+int palette = *(int*)&settings3DS.NESPalette;
+SMenuItem fileMenu[1001];
+std::vector<std::string> fileList;
+
 SMenuItem optionsForPalette[] = {
-	MENU_MAKE_DIALOG_ACTION (0, "FCEUX", "Default"),
-    MENU_MAKE_DIALOG_ACTION (1, "Composite Direct (FBX)", "direct capture palette"),
-    MENU_MAKE_DIALOG_ACTION (2, "NES Classic (FBX)", "taken from NES Classic"),
-	MENU_MAKE_DIALOG_ACTION (3, "PC-10", "Playchoice 10 arcade"),
-	MENU_MAKE_DIALOG_ACTION (4, "PVM Style D93 (FBX)", "Sony PVM with D93 color temp"),
-	MENU_MAKE_DIALOG_ACTION (5, "Smooth (FBX)", "Firebrandx's premiere final palette"),
-	MENU_MAKE_DIALOG_ACTION (6, "Sony CXA", "consumer-grade Sony TV sets"),
-	MENU_MAKE_DIALOG_ACTION (7, "Wavebeam", "Nakedarthur's final aprox palette"),
+	MENU_MAKE_DIALOG_ACTION (0, "Smooth (FBX)", "Firebrandx's premiere final palette"),
     MENU_MAKE_LASTITEM  ()
 };
 
@@ -162,7 +166,10 @@ SMenuItem optionMenu[] = {
     MENU_MAKE_CHECKBOX  (21000, "  Automatically save state on exit and load state on start", 0),
     MENU_MAKE_DISABLED  (""),
 	
-	MENU_MAKE_PICKER    (69696, "  Palette", "Choose which NES color palette you prefer.", optionsForPalette, DIALOGCOLOR_CYAN),
+    //
+    // UPDATE THIS
+    //
+	MENU_MAKE_PICKER    (69696, "  Palette", "Select your color palette...", fileMenu, DIALOGCOLOR_CYAN),
 	MENU_MAKE_DISABLED  (""),
 	
     MENU_MAKE_HEADER1   ("GAME-SPECIFIC SETTINGS"),
@@ -1079,7 +1086,12 @@ bool impl3dsReadWriteSettingsGlobal(bool writeMode)
     config3dsReadWriteInt32("HideUnnecessaryBottomScrText=%d\n", &settings3DS.HideUnnecessaryBottomScrText, 0, 1);
     config3dsReadWriteInt32("Font=%d\n", &settings3DS.Font, 0, 2);
 	
-	config3dsReadWriteInt32("NESPalette=%d\n", &settings3DS.NESPalette, 0, 7);
+    // Loop this to fill in palette data
+    for (int i = 0; i < 64; i++) {
+        for (int j = 0; j < 4; j++) {
+            config3dsReadWriteInt32("NESPalette=%d\n", &settings3DS.NESPalette);
+        }
+    }
 	
     config3dsReadWriteInt32("UseGlobalButtonMappings=%d\n", &settings3DS.UseGlobalButtonMappings, 0, 1);
     config3dsReadWriteInt32("UseGlobalTurbo=%d\n", &settings3DS.UseGlobalTurbo, 0, 1);
@@ -1239,7 +1251,7 @@ bool impl3dsCopyMenuToOrFromSettings(bool copyMenuToSettings)
     UPDATE_SETTINGS(settings3DS.UseGlobalVolume, -1, 20002);
     UPDATE_SETTINGS(settings3DS.AutoSavestate, -1, 21000);
 	
-	UPDATE_SETTINGS(settings3DS.NESPalette, -1, 69696);
+    UPDATE_SETTINGS(settings3DS.NESPalette, -1, 69696);
 
     UPDATE_SETTINGS(settings3DS.UseGlobalEmuControlKeys, -1, 50003);
     if (settings3DS.UseGlobalButtonMappings || copyMenuToSettings)

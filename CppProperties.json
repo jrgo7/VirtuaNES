@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "inheritEnvironments": [
+        "mingw_64"
+      ],
+      "name": "Mingw64",
+      "includePath": [
+        "${workspaceRoot}\\include\\**",
+        "${workspaceRoot}\\src\\3ds\\**",
+        "${workspaceRoot}\\src\\cores\\virtuanes\\**",
+        "C:\\msys64\\opt\\devkitpro\\devkitARM\\**",
+        "C:\\msys64\\opt\\devkitpro\\libctru\\**"
+      ],
+      "defines": [
+        "ARM11"
+      ],
+      "compilerPath": "C:\\msys64\\opt\\devkitpro\\devkitARM\\bin\\arm-none-eabi-g++",
+      "intelliSenseMode": "linux-gcc-x64"
+    }
+  ]
+}
