@@ -312,7 +312,7 @@ void menuSelectFile(void)
             strncpy(romFileNameLastSelected, romFileName, _MAX_PATH);
             if (romFileName[0] == 1)
             {
-                if (strcmp(romFileName, "\x01 ..") == 0)
+                if (strcmp(romFileName, "\x01 ... Parent Directory") == 0)
                     file3dsGoToParentDirectory();
                 else
                     file3dsGoToChildDirectory(&romFileName[2]);
@@ -453,7 +453,7 @@ void menuPause()
             romFileName = fileList[selection].c_str();
             if (romFileName[0] == 1)
             {
-                if (strcmp(romFileName, "\x01 ..") == 0)
+                if (strcmp(romFileName, "\x01 ... Parent Directory") == 0)
                     file3dsGoToParentDirectory();
                 else
                     file3dsGoToChildDirectory(&romFileName[2]);

@@ -244,14 +244,14 @@ std::vector<std::string> file3dsGetFiles(char *extensions, int maxFiles)
 {
     std::vector<std::string> files;
     char buffer[_MAX_PATH];
-
     struct dirent* dir;
     DIR* d = opendir(currentDir);
+    bool has_parent = strlen(currentDir) > 1;
 
-    if (strlen(currentDir) > 1)
+    if (has_parent)
     {
         // Insert the parent directory.
-        snprintf(buffer, _MAX_PATH, "\x01 ..");   
+        snprintf(buffer, _MAX_PATH, "\x01 ... Parent Directory");   
         files.push_back(buffer);
     }
 
@@ -281,7 +281,11 @@ std::vector<std::string> file3dsGetFiles(char *extensions, int maxFiles)
         closedir(d);
     }
 
-    std::sort(files.begin(), files.end());
+    if (has_parent) {
+        std::sort(files.begin() + 1, files.end());
+    } else {
+        std::sort(files.begin(), files.end())
+    }
 
     return files;
 }
